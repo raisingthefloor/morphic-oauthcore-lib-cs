@@ -1,4 +1,4 @@
-﻿// Copyright 2021 Raising the Floor - US, Inc.
+﻿// Copyright 2021-2022 Raising the Floor - US, Inc.
 //
 // Licensed under the New BSD license. You may not use this file except in
 // compliance with this License.
@@ -23,6 +23,7 @@
 
 using Morphic.Core;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Morphic.OAuth.Rfc7591
 {
@@ -38,6 +39,11 @@ namespace Morphic.OAuth.Rfc7591
 
     public struct Rfc7591ClientInformationResponseContent
     {
+        public string? registration_access_token { get; set; }
+        public string? registration_client_uri { get; set; }
+
+        //
+
         public string? client_id { get; set; }
         public string? client_secret { get; set; }
         public ulong? client_id_issued_at { get; set; }
@@ -45,11 +51,22 @@ namespace Morphic.OAuth.Rfc7591
 
         //
 
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public List<string>? redirect_uris { get; set; }
+        //
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? token_endpoint_auth_method { get; set; }
+        //
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public List<string>? grant_types { get; set; }
+        //
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public List<string>? response_types { get; set; }
+        //
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? software_id { get; set; }
+        //
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? software_version { get; set; }
     }
 
