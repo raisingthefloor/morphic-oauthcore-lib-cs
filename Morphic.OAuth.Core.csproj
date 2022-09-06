@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<Nullable>enable</Nullable>
-		<Version>1.1.0</Version>
+		<Version>1.2.0</Version>
 		<Authors>Raising the Floor - US, Inc.</Authors>
 		<Company>Raising the Floor - US, Inc.</Company>
 		<Description>Morphic OAuth 2.0 core library</Description>
