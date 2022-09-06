@@ -23,15 +23,14 @@
 
 using Morphic.Core;
 
-namespace Morphic.OAuth
+namespace Morphic.OAuth;
+
+public enum OAuthTokenEndpointAuthMethod
 {
-    public enum OAuthTokenEndpointAuthMethod
-    {
-        [MorphicStringValue("none")]
-        None,              // public client (no client secret; does not use token endpoint)
-        [MorphicStringValue("client_secret_basic")]
-        ClientSecretBasic, // default (uses bearer token in Authorization header)
-        [MorphicStringValue("client_secret_post")]
-        ClientSecretPost,  // uses bearer token in HTTP POST parameter
-    }
+    [MorphicStringValue("none")]
+    None,              // public client (no client secret; does not use token endpoint)
+    [MorphicStringValue("client_secret_basic")]
+    ClientSecretBasic, // default (uses bearer token in Authorization header)
+    [MorphicStringValue("client_secret_post")]
+    ClientSecretPost,  // uses bearer token in HTTP POST parameter
 }
