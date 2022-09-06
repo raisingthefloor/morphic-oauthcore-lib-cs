@@ -25,68 +25,79 @@ using Morphic.Core;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Morphic.OAuth.Rfc7591
+namespace Morphic.OAuth.Rfc7591;
+
+public struct Rfc7591ClientRegistrationRequestContent
 {
-    public struct Rfc7591ClientRegistrationRequestContent
-    {
-        public List<string>? redirect_uris { get; set; }
-        public string? token_endpoint_auth_method { get; set; }
-        public List<string>? grant_types { get; set; }
-        public List<string>? response_types { get; set; }
-        public string? software_id { get; set; }
-        public string? software_version { get; set; }
-    }
+    public List<string>? redirect_uris { get; set; }
+    public string? token_endpoint_auth_method { get; set; }
+    public List<string>? grant_types { get; set; }
+    public List<string>? response_types { get; set; }
+    public string? software_id { get; set; }
+    public string? software_version { get; set; }
+}
 
-    public struct Rfc7591ClientInformationResponseContent
-    {
-        public string? registration_access_token { get; set; }
-        public string? registration_client_uri { get; set; }
-
-        //
-
-        public string? client_id { get; set; }
-        public string? client_secret { get; set; }
-        public ulong? client_id_issued_at { get; set; }
-        public ulong? client_secret_expires_at { get; set; }
-
-        //
-
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public List<string>? redirect_uris { get; set; }
-        //
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public string? token_endpoint_auth_method { get; set; }
-        //
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public List<string>? grant_types { get; set; }
-        //
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public List<string>? response_types { get; set; }
-        //
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public string? software_id { get; set; }
-        //
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public string? software_version { get; set; }
-    }
-
-    public enum Rfc7591ClientRegistrationErrorCodes
-    {
-        [MorphicStringValue("invalid_redirect_uri")]
-        InvalidRedirectUri,
-        [MorphicStringValue("invalid_client_metadata")]
-        InvalidClientMetadata,
-        [MorphicStringValue("invalid_software_statement")]
-        InvalidSoftwareStatement,
-        [MorphicStringValue("unapproved_software_statement")]
-        UnapprovedSoftwareStatement,
-    }
+public struct Rfc7591ClientInformationResponseContent
+{
+    public string? registration_access_token { get; set; }
+    //
+    public string? registration_client_uri { get; set; }
 
     //
 
-    public struct Rfc7591ClientRegistrationErrorResponseContent
-    {
-        public string? error { get; set; }
-        public string? error_description { get; set; }
-    }
+    public string? client_id { get; set; }
+    //
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? client_secret { get; set; }
+    //
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public ulong? client_id_issued_at { get; set; }
+    //
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public ulong? client_secret_expires_at { get; set; }
+
+    //
+
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public List<string>? redirect_uris { get; set; }
+    //
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? token_endpoint_auth_method { get; set; }
+    //
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public List<string>? grant_types { get; set; }
+    //
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public List<string>? response_types { get; set; }
+    //
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? software_id { get; set; }
+    //
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? software_version { get; set; }
+}
+
+public enum Rfc7591ClientRegistrationErrorCodes
+{
+    [MorphicStringValue("invalid_redirect_uri")]
+    InvalidRedirectUri,
+    //
+    [MorphicStringValue("invalid_client_metadata")]
+    InvalidClientMetadata,
+    //
+    [MorphicStringValue("invalid_software_statement")]
+    InvalidSoftwareStatement,
+    //
+    [MorphicStringValue("unapproved_software_statement")]
+    UnapprovedSoftwareStatement,
+}
+
+//
+
+public struct Rfc7591ClientRegistrationErrorResponseContent
+{
+    public string? error { get; set; }
+    //
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? error_description { get; set; }
 }

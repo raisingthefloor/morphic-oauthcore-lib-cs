@@ -31,6 +31,16 @@ namespace Morphic.OAuth.Utils
     {
         public const string CONTENT_TYPE_APPLICATION_JSON = "application/json";
 
+        public static string EncodeUsernameAndPasswordForOAuthBasicAuthorization(string username, string password)
+        {
+            // NOTE: OAuth encodes the username and password (which are typically a client id and client secret) using URL-encoding (presumably to prevent issues with colons or other dangerous characters in the username or password)
+            var usernameWithPassword = WebUtility.UrlEncode(username) + ":" + WebUtility.UrlEncode(password);
+            // per RFC 2617, we should use ISO-8859-1 encoding; note that in our scenario it probably doesn't really matter since the string is UrlEncoded
+            var usernameWithPasswordAsByteArray = Encoding.GetEncoding("ISO-8859-1").GetBytes(usernameWithPassword);
+
+            return Convert.ToBase64String(usernameWithPasswordAsByteArray);
+        }
+
         // NOTE: this function verifies that the content is "application/json" but does not restrict the character set
         public static bool VerifyContentTypeIsApplicationJson(string contentType)
         {
