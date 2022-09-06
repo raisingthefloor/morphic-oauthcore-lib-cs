@@ -23,13 +23,12 @@
 
 using Morphic.Core;
 
-namespace Morphic.OAuth
+namespace Morphic.OAuth;
+
+public enum OAuthResponseType
 {
-    public enum OAuthResponseType
-    {
-        [MorphicStringValue("code")]
-        Code,
-        [MorphicStringValue("token")]
-        Token,
-    }
+    [MorphicStringValue("code")]
+    Code,
+    [MorphicStringValue("token")]
+    Token,
 }
