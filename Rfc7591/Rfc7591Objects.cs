@@ -39,8 +39,10 @@ public struct Rfc7591ClientRegistrationRequestContent
 
 public struct Rfc7591ClientInformationResponseContent
 {
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? registration_access_token { get; set; }
     //
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? registration_client_uri { get; set; }
 
     //
